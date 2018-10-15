@@ -11,7 +11,11 @@ export default {
   ],
   plugins: [
     babel({
-      presets: [["@babel/preset-env"], "@babel/preset-react"],
+      presets: [
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@babel/preset-flow"
+      ],
       exclude: "node_modules/**",
       plugins: ["@babel/plugin-proposal-class-properties"]
     })

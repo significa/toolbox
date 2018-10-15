@@ -6,8 +6,9 @@
   "scripts": {
     "build": "rm -fr ./dist && rollup -c",
     "deploy": "rm -fr ./dist && npm run build && npm publish",
-    "test": "jest src",
-    "test:watch": "npm test -- --watch"
+    "test": "jest src && npm run flow",
+    "test:watch": "est src --watch",
+    "test:flow": "flow ."
   },
   "author": "Significa Lda.",
   "license": "ISC",
@@ -24,6 +25,7 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
+    "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.0.0",
@@ -31,6 +33,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "eslint": "^5.7.0",
+    "flow-bin": "^0.83.0",
     "jest": "^23.6.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
