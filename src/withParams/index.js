@@ -2,13 +2,12 @@ import React, { PureComponent } from "react"
 import queryString from "qs"
 import objEqual from "deep-equal"
 
-const getDisplayName = WrappedComponent =>
-  WrappedComponent.displayName || WrappedComponent.name || "Component"
+import getDisplayName from "../common/getDisplayName"
 
 export default initialQuery => WrappedComponent => {
-  if (!initialQuery)
-    return () =>
-      Error("You should pass an initial query into the withParams hoc.")
+  if (!initialQuery) {
+    throw new Error("withParams requires an initial query.")
+  }
 
   return class hocComponent extends PureComponent {
     static displayName = `withParams(${getDisplayName(WrappedComponent)})`
@@ -28,10 +27,10 @@ export default initialQuery => WrappedComponent => {
     setInitialParams = () => {
       const { history } = this.props
 
-      const currentParms = this.getCurrentSearch()
+      const currentParams = this.getCurrentSearch()
       const objSearch = {
         ...initialQuery,
-        ...currentParms
+        ...currentParams
       }
       const strSearch = queryString.stringify(objSearch)
       const searchObj = queryString.parse(history.location.search, {
@@ -52,18 +51,12 @@ export default initialQuery => WrappedComponent => {
       return queryString.parse(search, { ignoreQueryPrefix: true })
     }
 
-    updateParams = ({ name, value, resetPage = false }) => {
+    updateParams = newParams => {
       const { history } = this.props
-
-      const newParam = { [name]: value }
-      const currentParms = resetPage
-        ? { ...this.getCurrentSearch(), page: 1 }
-        : this.getCurrentSearch()
-      const strSearch = queryString.stringify({ ...currentParms, ...newParam })
 
       return history.replace({
         ...history.location,
-        search: strSearch
+        search: queryString.stringify(newParams)
       })
     }
 
