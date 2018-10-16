@@ -6,7 +6,8 @@
   "scripts": {
     "build": "rm -fr ./dist && rollup -c",
     "deploy": "rm -fr ./dist && npm run build && npm publish",
-    "test": "jest src && npm run test:flow",
+    "test": "npm run lint && jest src && npm run test:flow",
+    "lint": "eslint src/**/*.js",
     "test:watch": "est src --watch",
     "test:flow": "flow ."
   },
@@ -31,17 +32,24 @@
     "@babel/runtime": "^7.0.0",
     "@significa/eslint-config-significa": "^1.0.1",
     "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "eslint": "^5.7.0",
     "flow-bin": "^0.83.0",
     "jest": "^23.6.0",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
     "regenerator-runtime": "^0.12.1",
     "rollup": "^0.66.6",
     "rollup-plugin-babel": "^4.0.3"
   },
   "jest": {
     "verbose": true
+  },
+  "dependencies": {
+    "deep-equal": "^1.0.1",
+    "qs": "^6.5.2"
+  },
+  "peerDependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
   }
 }
