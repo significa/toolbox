@@ -10,7 +10,7 @@ This HOC is useful when you need to control any state of the page using the quer
 ### Method
 
 ```js
-this.props.updateParams({ name: string, value: string, resetPage?: boolean }) => void
+this.props.updateParams(({ [queryName]: value }: Object));
 ```
 
 ### Data
@@ -25,19 +25,17 @@ const { ...allQueries } = this.props.params;
 import React, { Component } from "react";
 import { withParams } from "@significa/toolbox";
 
-import objEqual from "deep-equal";
-
 class App extends Component {
   componentDidUpdate(prevProps) {
     const { params } = this.props;
 
-    if (!objEqual(prevProps.params, params)) {
+    if (prevProps.params.page !== params.page)) {
       this.actionFetch(params);
     }
   }
 
   handlePageChange = value => {
-    this.props.updateParams({ name: "page", value });
+    this.props.updateParams({ "page", value, status: "filtered" });
   };
 
   render() {
@@ -48,6 +46,7 @@ class App extends Component {
 }
 
 const ParamsWithParams = withParams({
+  status: "all",
   page: 1
 });
 
