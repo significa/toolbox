@@ -1,4 +1,5 @@
 import babel from "rollup-plugin-babel"
+import resolve from "rollup-plugin-node-resolve"
 import pkg from "./package.json"
 
 export default {
@@ -10,6 +11,7 @@ export default {
     ...Object.keys(pkg.peerDependencies || {})
   ],
   plugins: [
+    resolve(),
     babel({
       presets: [
         "@babel/preset-env",
