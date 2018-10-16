@@ -1,80 +1,107 @@
-import React, { PureComponent } from "react";
-import queryString from "qs";
-import objEqual from "deep-equal";
+// @flow
 
-import getDisplayName from "../common/getDisplayName";
+import * as React from "react"
+import qs from "qs"
+import objEqual from "deep-equal"
 
-export default initialQuery => WrappedComponent => {
+import getDisplayName from "../common/getDisplayName"
+
+type QueryType = { [string]: * }
+type ElementType = React.StatelessFunctionalComponent<*>
+type PropType = {
+  history: {
+    location: { search: string },
+    replace: (parms: QueryType) => void
+  }
+}
+type QueryStringType = {
+  parse: (str: string, { ignoreQueryPrefix: boolean }) => QueryType,
+  stringify: (obj: QueryType) => string
+}
+
+const queryString: QueryStringType = qs
+
+export default (initialQuery: QueryType) => (WrappedComponent: ElementType) => {
   if (!initialQuery) {
-    throw new Error("withParams requires an initial query.");
+    throw new Error("withParams requires an initial query.")
   }
 
-  return class hocComponent extends PureComponent {
-    static displayName = `withParams(${getDisplayName(WrappedComponent)})`;
+  return class hocComponent extends React.PureComponent<PropType> {
+    static displayName = `withParams(${getDisplayName(
+      (WrappedComponent: ElementType)
+    )})`
 
     componentDidMount() {
-      this.setInitialParams();
+      this.setInitialParams()
     }
 
     componentDidUpdate() {
-      const { history } = this.props;
+      const { history } = this.props
 
       if (!history.location.search) {
-        this.setInitialParams();
+        this.setInitialParams()
       }
     }
 
-    setInitialParams = () => {
-      const { history } = this.props;
+    setInitialParams = (): void | null => {
+      const { history } = this.props
 
-      const currentParams = this.getCurrentSearch();
-      const objSearch = {
+      const currentParams: QueryType = this.getCurrentSearch()
+      const objSearch: QueryType = {
         ...initialQuery,
         ...currentParams
-      };
-      const strSearch = queryString.stringify(objSearch);
-      const searchObj = queryString.parse(history.location.search, {
-        ignoreQueryPrefix: true
-      });
-
-      if (!objEqual(searchObj, objSearch)) {
-        history.replace({
-          search: strSearch
-        });
       }
-    };
+      const strSearch: string = queryString.stringify(objSearch)
+      const searchObj: QueryType = queryString.parse(history.location.search, {
+        ignoreQueryPrefix: true
+      })
 
-    getCurrentSearch = () => {
-      const { history } = this.props;
-      const { search } = history.location;
+      if (!objEqual((searchObj: QueryType), (objSearch: QueryType))) {
+        return history.replace({
+          search: strSearch
+        })
+      }
 
-      return queryString.parse(search, { ignoreQueryPrefix: true });
-    };
+      return null
+    }
 
-    updateParams = newParams => {
-      const { history } = this.props;
+    getCurrentSearch = (): QueryType => {
+      const {
+        history: {
+          location: { search }
+        }
+      } = this.props
+
+      return queryString.parse((search: string), { ignoreQueryPrefix: true })
+    }
+
+    updateParams = (newParams: QueryType): void => {
+      const { history } = this.props
       const strSearch = queryString.stringify({
         ...this.getCurrentSearch(),
         ...newParams
-      });
+      })
 
       return history.replace({
         ...history.location,
         search: strSearch
-      });
-    };
+      })
+    }
 
     render() {
-      const { history } = this.props;
-      const searchStr = history.location.search;
-      const params = queryString.parse(searchStr, { ignoreQueryPrefix: true });
+      const { history } = this.props
+      const searchStr: string = history.location.search
+      const params: QueryType = queryString.parse((searchStr: string), {
+        ignoreQueryPrefix: true
+      })
+
       return (
         <WrappedComponent
           params={params}
           updateParams={this.updateParams}
           {...this.props}
         />
-      );
+      )
     }
-  };
-};
+  }
+}
