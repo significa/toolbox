@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from "react"
-import queryString from "qs"
+import qs from "qs"
 import objEqual from "deep-equal"
 
 import getDisplayName from "../common/getDisplayName"
@@ -14,6 +14,12 @@ type PropType = {
     replace: (parms: QueryType) => void
   }
 }
+type QueryStringType = {
+  parse: (str: string, { ignoreQueryPrefix: boolean }) => QueryType,
+  stringify: (obj: QueryType) => string
+}
+
+const queryString: QueryStringType = qs
 
 export default (initialQuery: QueryType) => (WrappedComponent: ElementType) => {
   if (!initialQuery) {
