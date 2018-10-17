@@ -6,6 +6,7 @@ export default {
   entry: "./src/index.js",
   format: "es",
   dest: pkg.main,
+  interop: false,
   external: [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.peerDependencies || {})

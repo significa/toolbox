@@ -8,7 +8,7 @@
     "deploy": "rm -fr ./dist && yarn build && npm publish",
     "test": "yarn lint && jest src && yarn test:flow",
     "lint": "eslint src/**/*.js",
-    "test:watch": "est src --watch",
+    "test:watch": "jest src --watch",
     "test:flow": "flow .",
     "precommit": "yarn lint",
     "prepush": "yarn test"
@@ -36,6 +36,8 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "enzyme": "^3.4.4",
+    "enzyme-adapter-react-16": "^1.2.0",
     "eslint": "^5.7.0",
     "flow-bin": "^0.83.0",
     "husky": "^1.1.2",
@@ -48,7 +50,8 @@
     "rollup-plugin-node-resolve": "^3.4.0"
   },
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "setupTestFrameworkScriptFile": "./src/setupTests.js"
   },
   "dependencies": {
     "deep-equal": "^1.0.1",
