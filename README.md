@@ -8,6 +8,7 @@
 ## HOC's
 
 - [withParams](https://github.com/Significa/toolbox/tree/master/src/withParams)
+- [CallbackInterval](https://github.com/Significa/toolbox/tree/master/src/CallbackInterval)
 
 ---
 
