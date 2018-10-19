@@ -1,3 +1,10 @@
+## <small>0.1.3 (2018-10-19)</small>
+
+* 0.1.3 ([a858975](https://github.com/Significa/toolbox/commit/a858975))
+* feat(Package): Update scripts ([7ca65e0](https://github.com/Significa/toolbox/commit/7ca65e0))
+
+
+
 ## <small>0.1.2 (2018-10-19)</small>
 
 * 0.1.2 ([20ff6c0](https://github.com/Significa/toolbox/commit/20ff6c0))
