@@ -1,3 +1,11 @@
+## <small>0.1.4 (2018-10-19)</small>
+
+* 0.1.4 ([cfe6081](https://github.com/Significa/toolbox/commit/cfe6081))
+* Update changelog ([b0e455d](https://github.com/Significa/toolbox/commit/b0e455d))
+* chore(Gitignore): Update ([cec7838](https://github.com/Significa/toolbox/commit/cec7838))
+
+
+
 ## <small>0.1.3 (2018-10-19)</small>
 
 * 0.1.3 ([a858975](https://github.com/Significa/toolbox/commit/a858975))
