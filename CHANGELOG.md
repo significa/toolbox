@@ -1,3 +1,10 @@
+## <small>0.1.2 (2018-10-19)</small>
+
+* 0.1.2 ([20ff6c0](https://github.com/Significa/toolbox/commit/20ff6c0))
+* feat(Changelog): Create ([27164c6](https://github.com/Significa/toolbox/commit/27164c6))
+
+
+
 ## <small>0.1.1 (2018-10-19)</small>
 
 * 0.1.1 ([4a8414e](https://github.com/Significa/toolbox/commit/4a8414e))

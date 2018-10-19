@@ -12,7 +12,11 @@
     "test:flow": "flow .",
     "precommit": "yarn lint",
     "prepush": "yarn test",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "changelog": "conventional-changelog -p react -i CHANGELOG.md -s -r 0 && git add . && git commit -am 'Update changelog'",
+    "major": "npm version major && npm run changelog",
+    "minor": "npm version minor && npm run changelog",
+    "patch": "npm version patch && npm run changelog"
   },
   "author": "Significa Lda.",
   "license": "ISC",
