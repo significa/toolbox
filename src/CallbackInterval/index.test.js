@@ -7,10 +7,9 @@ jest.useFakeTimers()
 
 describe("callbackInterval", () => {
   const mockCallback = jest.fn()
-  const options = { key: "value", foo: "value2" }
   const children = <p>children</p>
   const component = mount(
-    <CallbackInterval callback={mockCallback} interval={300} options={options}>
+    <CallbackInterval callback={mockCallback} interval={300}>
       {children}
     </CallbackInterval>
   )
@@ -26,10 +25,6 @@ describe("callbackInterval", () => {
 
     expect(mockCallback).toBeCalled()
     expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 300)
-  })
-
-  it("callback is called with arguments", () => {
-    expect(mockCallback.mock.calls[0][0]).toEqual(options)
   })
 
   it("has children", () => {

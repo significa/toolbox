@@ -5,7 +5,6 @@ import * as React from "react"
 type PropType = {
   children: React.Node,
   callback: (options?: mixed) => void,
-  options?: mixed,
   interval?: number
 }
 
@@ -13,7 +12,6 @@ type StateType = { intervalId: IntervalID | null }
 
 class CallbackInterval extends React.Component<PropType, StateType> {
   static defaultProps = {
-    options: {},
     interval: 10000
   }
 
@@ -22,9 +20,9 @@ class CallbackInterval extends React.Component<PropType, StateType> {
   }
 
   componentDidMount() {
-    const { callback, options } = this.props
+    const { callback } = this.props
 
-    callback(options)
+    callback()
     this.setTimer()
   }
 
@@ -41,9 +39,9 @@ class CallbackInterval extends React.Component<PropType, StateType> {
   }
 
   timer = (): void => {
-    const { callback, options } = this.props
+    const { callback } = this.props
 
-    callback(options)
+    callback()
   }
 
   render() {
