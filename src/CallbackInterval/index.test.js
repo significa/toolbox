@@ -6,11 +6,12 @@ import CallbackInterval from "."
 jest.useFakeTimers()
 
 describe("callbackInterval", () => {
-  const mockCallback = jest.fn()
   const options = { key: "value", foo: "value2" }
+  const mockCallback = jest.fn()
+  const callback = () => mockCallback(options)
   const children = <p>children</p>
   const component = mount(
-    <CallbackInterval callback={mockCallback} interval={300} options={options}>
+    <CallbackInterval callback={callback} interval={300}>
       {children}
     </CallbackInterval>
   )

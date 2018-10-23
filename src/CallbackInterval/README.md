@@ -13,21 +13,24 @@ It'll call a callback with options every 1000ms (default value).
 | ------------ | -------------- | -------- | ------------- |
 | **callback** | `{Function}`   | `true`   | -             |
 | **interval** | `{Number}`     | `false`  | `10000`       |
-| **options**  | `{Any}`        | `false`  | `{}`          |
 | **children** | `{React.Node}` | `true`   | -             |
 
 ## Usage
 
 ```jsx
 class App extends PureComponent {
-  render() {
-    const { callback, params } = this.props;
+  callback = () => {
+    const { callback, params } = this.props
 
+    callback(params)
+  }
+
+  render() {
     return (
-      <CallbackInterval callback={callback} options={params} interval={60000}>
+      <CallbackInterval callback={this.callback} interval={60000}>
         <p>Content</p>
       </CallbackInterval>
-    );
+    )
   }
 }
 ```
