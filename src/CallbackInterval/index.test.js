@@ -7,10 +7,9 @@ jest.useFakeTimers()
 
 describe("callbackInterval", () => {
   const mockCallback = jest.fn()
-  const callback = () => mockCallback()
   const children = <p>children</p>
   const component = mount(
-    <CallbackInterval callback={callback} interval={300}>
+    <CallbackInterval callback={mockCallback} interval={300}>
       {children}
     </CallbackInterval>
   )
