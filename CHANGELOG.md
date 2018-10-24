@@ -1,3 +1,14 @@
+## 0.2.0 (2018-10-24)
+
+* 0.2.0 ([6f65216](https://github.com/Significa/toolbox/commit/6f65216))
+* Remove options from callback interval ([4aad4e9](https://github.com/Significa/toolbox/commit/4aad4e9))
+* Update changelog ([7db6733](https://github.com/Significa/toolbox/commit/7db6733))
+* Update tests ([f8e9a7b](https://github.com/Significa/toolbox/commit/f8e9a7b))
+* chore(Readme): add scripts section ([64ca357](https://github.com/Significa/toolbox/commit/64ca357))
+* test(CallbackInterval): Remove unncessary tests ([f607408](https://github.com/Significa/toolbox/commit/f607408))
+
+
+
 ## <small>0.1.4 (2018-10-19)</small>
 
 * 0.1.4 ([cfe6081](https://github.com/Significa/toolbox/commit/cfe6081))
