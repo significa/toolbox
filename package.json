@@ -48,6 +48,7 @@
     "flow-bin": "^0.83.0",
     "husky": "^1.1.2",
     "jest": "^23.6.0",
+    "map-files": "^0.8.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "regenerator-runtime": "^0.12.1",
