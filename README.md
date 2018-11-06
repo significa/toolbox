@@ -10,6 +10,10 @@
 - [withParams](https://github.com/Significa/toolbox/tree/master/src/withParams)
 - [CallbackInterval](https://github.com/Significa/toolbox/tree/master/src/CallbackInterval)
 
+## Numbers
+
+- [abbreviateNumber](https://github.com/Significa/toolbox/tree/master/src/abbreviateNumber)
+
 ## Scripts
 
 ### Dev mode
