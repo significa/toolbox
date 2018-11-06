@@ -26,11 +26,11 @@
 **Before deploy**
 [(Semver standard)](https://semver.org/)
 
-| Script        | Comamand       | Description                                                         |
-| ------------- | -------------- | ------------------------------------------------------------------- |
-| Major version | `$ yarn major` | Version when you make incompatible API changes                      |
-| Minor version | `$ yarn minor` | Version when you add functionality in a backwards-compatible manner |
-| Patch version | `$ yarn patch` | Version when you make backwards-compatible bug fixes                |
+| Script        | Comamand               | Description                                                         |
+| ------------- | ---------------------- | ------------------------------------------------------------------- |
+| Major version | `$ yarn release:major` | Version when you make incompatible API changes                      |
+| Minor version | `$ yarn release:minor` | Version when you add functionality in a backwards-compatible manner |
+| Patch version | `$ yarn release:patch` | Version when you make backwards-compatible bug fixes                |
 
 _After each script the changelog file will be updated with the latest changes._
 
