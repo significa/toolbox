@@ -1,3 +1,16 @@
+## <small>0.2.1 (2018-11-06)</small>
+
+* 0.2.1 ([66258c4](https://github.com/Significa/toolbox/commit/66258c4))
+* Add withOutsideClickHandler HOC ([ce2cc43](https://github.com/Significa/toolbox/commit/ce2cc43))
+* chore(Update scripts): ([c0daa14](https://github.com/Significa/toolbox/commit/c0daa14))
+* Export HOC ([8f5b9c0](https://github.com/Significa/toolbox/commit/8f5b9c0))
+* feat(abbreviateNumber): ([b6b0d32](https://github.com/Significa/toolbox/commit/b6b0d32))
+* Latest build ([65279fc](https://github.com/Significa/toolbox/commit/65279fc))
+* Update changelog ([c977394](https://github.com/Significa/toolbox/commit/c977394))
+* chore(Bundle): By path ([934daf7](https://github.com/Significa/toolbox/commit/934daf7))
+
+
+
 ## 0.2.0 (2018-10-24)
 
 * 0.2.0 ([6f65216](https://github.com/Significa/toolbox/commit/6f65216))
