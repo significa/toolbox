@@ -16,7 +16,7 @@ const types = {
 ## Returning
 
 ```js
-types.START; // ACTION_START
-types.COMPLETE; // ACTION_COMPLETE
-types.ERROR; // ACTION_ERROR
+types.start; // ACTION_START
+types.complete; // ACTION_COMPLETE
+types.error; // ACTION_ERROR
 ```

@@ -9,6 +9,7 @@
 
 - [withParams](https://github.com/Significa/toolbox/tree/master/src/withParams)
 - [CallbackInterval](https://github.com/Significa/toolbox/tree/master/src/CallbackInterval)
+- [withOutsideClickHandler](https://github.com/Significa/toolbox/tree/master/src/withOutsideClickHandler)
 
 ## Numbers
 
