@@ -5,7 +5,6 @@
   "main": "dist/significa-toolbox.js",
   "scripts": {
     "build": "rm -fr ./dist && rollup -c",
-    "build:commit": "npm run build && git commit -am \"Latest build\"",
     "test": "npm run lint && jest src && npm run test:flow",
     "lint": "eslint src/**/*.js",
     "test:watch": "jest src --watch",
@@ -14,9 +13,9 @@
     "prepush": "npm run test",
     "commit": "npx git-cz",
     "changelog": "conventional-changelog -p react -i CHANGELOG.md -s -r 0 && git add . && git commit -am 'Update changelog'",
-    "release:patch": "npm run build:commit && npm version patch && npm run changelog",
-    "release:major": "npm run build:commit && npm version major && npm run changelog",
-    "release:minor": "npm run build:commit && npm version minor && npm run changelog"
+    "release:patch": "npm run build && npm version patch && npm run changelog",
+    "release:major": "npm run build && npm version major && npm run changelog",
+    "release:minor": "npm run build && npm version minor && npm run changelog"
   },
   "author": "Significa Lda.",
   "license": "ISC",
