@@ -1,3 +1,18 @@
+## <small>0.2.2 (2018-12-04)</small>
+
+* 0.2.2 ([0a68f71](https://github.com/Significa/toolbox/commit/0a68f71))
+* Update changelog ([2ee8ad6](https://github.com/Significa/toolbox/commit/2ee8ad6))
+* Update name ([d41ef53](https://github.com/Significa/toolbox/commit/d41ef53))
+* Update package ([51e7868](https://github.com/Significa/toolbox/commit/51e7868))
+* Update README.md ([fb63826](https://github.com/Significa/toolbox/commit/fb63826))
+* Update README.md ([9032e71](https://github.com/Significa/toolbox/commit/9032e71))
+* Update README.md ([097a95b](https://github.com/Significa/toolbox/commit/097a95b))
+* Update README.md ([7bd6c8a](https://github.com/Significa/toolbox/commit/7bd6c8a))
+* fix(withParams): It avoid to call `setInitialParams` if there isn't any valid params ([1c9f1d7](https://github.com/Significa/toolbox/commit/1c9f1d7))
+* chore(README): Update scripts ([1fcfa6b](https://github.com/Significa/toolbox/commit/1fcfa6b))
+
+
+
 ## <small>0.2.1 (2018-11-06)</small>
 
 * 0.2.1 ([66258c4](https://github.com/Significa/toolbox/commit/66258c4))
