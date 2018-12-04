@@ -1,5 +1,5 @@
 {
-  "name": "significa-toolbox",
+  "name": "@significa/toolbox",
   "version": "0.2.1",
   "description": "",
   "main": "dist/significa-toolbox.js",

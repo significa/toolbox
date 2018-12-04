@@ -32,7 +32,9 @@ export default (initialQuery: QueryType) => (WrappedComponent: ElementType) => {
     )})`
 
     componentDidMount() {
-      this.setInitialParams()
+      if (Object.values(initialQuery).filter(Boolean).length !== 0) {
+        this.setInitialParams()
+      }
     }
 
     componentDidUpdate() {
