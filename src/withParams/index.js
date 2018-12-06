@@ -3,6 +3,7 @@
 import * as React from "react"
 import qs from "qs"
 import objEqual from "deep-equal"
+import debounce from "lodash.debounce"
 
 import getDisplayName from "../common/getDisplayName"
 
@@ -14,6 +15,11 @@ type PropType = {
     replace: (parms: QueryType) => void
   }
 }
+
+type State = {
+  innerParams: QueryType
+}
+
 type QueryStringType = {
   parse: (str: string, { ignoreQueryPrefix: boolean }) => QueryType,
   stringify: (obj: QueryType) => string
@@ -26,10 +32,20 @@ export default (initialQuery: QueryType) => (WrappedComponent: ElementType) => {
     throw new Error("withParams requires an initial query.")
   }
 
-  return class hocComponent extends React.PureComponent<PropType> {
+  return class hocComponent extends React.PureComponent<PropType, State> {
     static displayName = `withParams(${getDisplayName(
       (WrappedComponent: ElementType)
     )})`
+
+    constructor(props: PropType) {
+      super(props)
+
+      this.state = {
+        innerParams: {}
+      }
+
+      this.setGlobalParams = debounce(this.setGlobalParams, 300)
+    }
 
     componentDidMount() {
       if (Object.values(initialQuery).filter(Boolean).length !== 0) {
@@ -45,28 +61,6 @@ export default (initialQuery: QueryType) => (WrappedComponent: ElementType) => {
       }
     }
 
-    setInitialParams = (): void | null => {
-      const { history } = this.props
-
-      const currentParams: QueryType = this.getCurrentSearch()
-      const objSearch: QueryType = {
-        ...initialQuery,
-        ...currentParams
-      }
-      const strSearch: string = queryString.stringify(objSearch)
-      const searchObj: QueryType = queryString.parse(history.location.search, {
-        ignoreQueryPrefix: true
-      })
-
-      if (!objEqual((searchObj: QueryType), (objSearch: QueryType))) {
-        return history.replace({
-          search: strSearch
-        })
-      }
-
-      return null
-    }
-
     getCurrentSearch = (): QueryType => {
       const {
         history: {
@@ -77,12 +71,36 @@ export default (initialQuery: QueryType) => (WrappedComponent: ElementType) => {
       return queryString.parse((search: string), { ignoreQueryPrefix: true })
     }
 
-    updateParams = (newParams: QueryType): void => {
+    setInitialParams = (): void | null => {
       const { history } = this.props
-      const strSearch = queryString.stringify({
-        ...this.getCurrentSearch(),
-        ...newParams
+
+      const currentParams: QueryType = this.getCurrentSearch()
+      const objSearch: QueryType = {
+        ...initialQuery,
+        ...currentParams
+      }
+
+      const strSearch: string = queryString.stringify(objSearch)
+      const searchObj: QueryType = queryString.parse(history.location.search, {
+        ignoreQueryPrefix: true
       })
+
+      this.setInnerParams(objSearch)
+
+      if (!objEqual((searchObj: QueryType), (objSearch: QueryType))) {
+        return history.replace({
+          search: strSearch
+        })
+      }
+
+      return null
+    }
+
+    setInnerParams = (innerParams: QueryType) => this.setState({ innerParams })
+
+    setGlobalParams = (params: QueryType) => {
+      const { history } = this.props
+      const strSearch = queryString.stringify(params)
 
       return history.replace({
         ...history.location,
@@ -90,16 +108,22 @@ export default (initialQuery: QueryType) => (WrappedComponent: ElementType) => {
       })
     }
 
+    updateParams = (newParams: QueryType) => {
+      const objSearch = {
+        ...this.getCurrentSearch(),
+        ...newParams
+      }
+
+      this.setInnerParams(objSearch)
+      this.setGlobalParams(objSearch)
+    }
+
     render() {
-      const { history } = this.props
-      const searchStr: string = history.location.search
-      const params: QueryType = queryString.parse((searchStr: string), {
-        ignoreQueryPrefix: true
-      })
+      const { innerParams } = this.state
 
       return (
         <WrappedComponent
-          params={params}
+          params={innerParams}
           updateParams={this.updateParams}
           {...this.props}
         />

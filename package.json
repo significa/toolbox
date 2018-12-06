@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "deep-equal": "^1.0.1",
+    "lodash.debounce": "^4.0.8",
     "qs": "^6.5.2"
   },
   "peerDependencies": {
