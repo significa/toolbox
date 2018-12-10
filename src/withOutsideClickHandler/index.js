@@ -12,16 +12,16 @@ const withOutsideClickHandler = (WrappedComponent: WrappedElementType) => {
     static defaultProps: PropsType
 
     componentDidMount() {
-      document.addEventListener("mousedown", this.handleClickOutside, true)
-      document.addEventListener("touchstart", this.handleClickOutside, true)
+      document.addEventListener("mousedown", this.handleClickOutSide, true)
+      document.addEventListener("touchstart", this.handleClickOutSide, true)
     }
 
     componentWillUnmount() {
-      document.removeEventListener("mousedown", this.handleClickOutside, true)
-      document.removeEventListener("touchstart", this.handleClickOutside, true)
+      document.removeEventListener("mousedown", this.handleClickOutSide, true)
+      document.removeEventListener("touchstart", this.handleClickOutSide, true)
     }
 
-    handleClickOutside = (e: MouseEvent | TouchEvent) => {
+    handleClickOutSide = (e: MouseEvent | TouchEvent) => {
       if (
         this.wrapper &&
         e.target instanceof Node &&
