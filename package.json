@@ -11,7 +11,7 @@
     "test:flow": "flow .",
     "precommit": "npm run lint",
     "prepush": "npm run test",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release"
   },
   "author": "Significa Lda.",
   "license": "ISC",
