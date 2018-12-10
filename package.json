@@ -5,17 +5,13 @@
   "main": "dist/significa-toolbox.js",
   "scripts": {
     "build": "rm -fr ./dist && rollup -c",
-    "test": "npm run lint && jest src && npm run test:flow",
+    "test": "jest src && npm run test:flow",
     "lint": "eslint src/**/*.js",
     "test:watch": "jest src --watch",
     "test:flow": "flow .",
     "precommit": "npm run lint",
     "prepush": "npm run test",
-    "commit": "npx git-cz",
-    "changelog": "conventional-changelog -p react -i CHANGELOG.md -s -r 0 && git add . && git commit -am 'Update changelog'",
-    "release:patch": "npm run build && npm version patch && npm run changelog",
-    "release:major": "npm run build && npm version major && npm run changelog",
-    "release:minor": "npm run build && npm version minor && npm run changelog"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "author": "Significa Lda.",
   "license": "ISC",
@@ -40,10 +36,15 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "commitizen": "^3.0.5",
     "cz-conventional-changelog": "^2.1.0",
     "enzyme": "^3.4.4",
     "enzyme-adapter-react-16": "^1.2.0",
-    "eslint": "^5.7.0",
+    "eslint": "^5.10.0",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
     "flow-bin": "^0.83.0",
     "husky": "^1.1.2",
     "jest": "^23.6.0",
@@ -53,7 +54,8 @@
     "regenerator-runtime": "^0.12.1",
     "rollup": "^0.66.6",
     "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-node-resolve": "^3.4.0"
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "semantic-release": "^15.12.4"
   },
   "dependencies": {
     "deep-equal": "^1.0.1",
