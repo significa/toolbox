@@ -1,50 +1,30 @@
 # @Significa/Toolbox
 
-## Redux utils
+### Redux utils
 
 - [createReducer](https://github.com/Significa/toolbox/tree/master/src/createReducer)
 - [defineActions](https://github.com/Significa/toolbox/tree/master/src/defineActions)
 
-## HOC's
+### HOC's
 
 - [withParams](https://github.com/Significa/toolbox/tree/master/src/withParams)
 - [CallbackInterval](https://github.com/Significa/toolbox/tree/master/src/CallbackInterval)
 - [withOutsideClickHandler](https://github.com/Significa/toolbox/tree/master/src/withOutsideClickHandler)
 
-## Numbers
+### Numbers
 
 - [abbreviateNumber](https://github.com/Significa/toolbox/tree/master/src/abbreviateNumber)
 
-## Scripts
+## Dev mode
 
-### Dev mode
+**Use commitizen to commit:** See the documentation: [commitizen](http://commitizen.github.io/cz-cli/)
+
 
 | Script      | Comamand            | Description                                                              |
 | ----------- | ------------------- | ------------------------------------------------------------------------ |
-| Commit      | `$ yarn commit`     | See the documentation: [commitizen](http://commitizen.github.io/cz-cli/) |
 | All tests   | `$ yarn test`       | Run jest tests                                                           |
 | Watch tests | `$ yarn test:watch` | Watch the test script                                                    |
 | Flow        | `$ yarn test:flow`  | Test flow type                                                           |
-
-### Releases
-
-**Before deploy**
-[(Semver standard)](https://semver.org/)
-
-| Script        | Comamand               | Description                                                         |
-| ------------- | ---------------------- | ------------------------------------------------------------------- |
-| Major version | `$ yarn release:major` | Version when you make incompatible API changes                      |
-| Minor version | `$ yarn release:minor` | Version when you add functionality in a backwards-compatible manner |
-| Patch version | `$ yarn release:patch` | Version when you make backwards-compatible bug fixes                |
-
-_After each script the changelog file will be updated with the latest changes._
-
-**Build and deploy**
-
-| Script | Comamand        | Description                                            |
-| ------ | --------------- | ------------------------------------------------------ |
-| Build  | `$ yarn build`  | -                                                      |
-| Deploy | `$ yarn deploy` | Remove dist filder, generate build then publish to npm |
 
 ---
 
